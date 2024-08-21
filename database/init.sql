@@ -286,4 +286,3 @@ CREATE TABLE IF NOT EXISTS UserOutfitRatings (
                                                  rating INT NOT NULL,
                                                  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
-
