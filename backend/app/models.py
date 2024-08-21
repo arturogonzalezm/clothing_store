@@ -6,10 +6,10 @@ from backend.app.database import Base
 class User(Base):
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String(50), unique=True, index=True)  # Specifying length for String
-    email = Column(String(255), unique=True, index=True)  # Specifying length for String
-    hashed_password = Column(String(128))  # Specifying length for String
+    id = Column(Integer, primary_key=True, index=True)  # Ensure this is present
+    username = Column(String(50), unique=True, index=True)
+    email = Column(String(255), unique=True, index=True)
+    hashed_password = Column(String(128))
 
     items = relationship("Item", back_populates="owner")
 

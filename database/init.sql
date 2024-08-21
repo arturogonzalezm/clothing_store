@@ -36,7 +36,7 @@ GRANT ALL PRIVILEGES ON DATABASE glamify TO glamify_user;
 
 -- Create the users table
 CREATE TABLE IF NOT EXISTS users (
-    user_id SERIAL PRIMARY KEY,
+    user_id SERIAL PRIMARY KEY,  -- This creates the primary key column named user_id
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     phone_number VARCHAR(20),
@@ -44,6 +44,16 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS items (
+    id SERIAL NOT NULL,
+    title VARCHAR(100),
+    description VARCHAR(500),
+    owner_id INTEGER,
+    PRIMARY KEY (id),
+    FOREIGN KEY(owner_id) REFERENCES users(user_id)  -- Referencing user_id in the users table
+);
+
 
 -- Optional: Create a trigger to automatically update the 'updated_at' field on record updates
 CREATE OR REPLACE FUNCTION update_updated_at_column()
